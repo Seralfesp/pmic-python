@@ -1,12 +1,4 @@
-#TODO:
-# - channel_list() function - consider including parameter for Slave-Inverted? 
-# - Check Channel List subVI in Ganged Initialize - is it needed?
-# - configure_triggers() function - better way to slice/access slave resources?
-# - Add 'Manual' case for measure_multiple() function?
-# - Check complete Channel Ganging library and ensure all functions are translated here
-# - Comment stuff. Linting?
-
-"""Helpers for controlling multiple NI-DCPower sessions as one logical ganged output.
+"""Helpers for controlling multiple PXIe-4151 Programmable Power Supply and PXIe-4051 E-Load sessions as one logical ganged output.
 
 Ganging modes:
 - Parallel: total current is split across channels when sourcing current-related setpoints.
@@ -17,6 +9,7 @@ Trigger model:
 - Slave channels follow master source and measure triggers through digital-edge terminals.
 
 Conventions:
+- Currently tested only with PXie-4151s and PXIe-4051s, but this can be modified to support other NI-DCPower instruments.
 - Channel name is currently fixed to "0" in channel_list().
 - Per-channel sign inversion is supported through ChannelMode.SLAVE_INVERTED.
 """
