@@ -10,9 +10,9 @@ from nidcpower_channel_ganging import *
 script_or_exe = sys.executable if getattr(sys, "frozen", False) else __file__
 service_directory = pathlib.Path(script_or_exe).resolve().parent
 measurement_service = nims.MeasurementService(
-    service_config_path=service_directory / "Ganged_EfficiencyAndLoadRegulation_PMIC.serviceconfig",
+    service_config_path=service_directory / "Ganged_EfficiencyLoadRegulationAndLoadTransient_PMIC.serviceconfig",
     version="1.0.0.0",
-    ui_file_paths=[service_directory / "Measurement UI.vi"],
+    ui_file_paths=[service_directory / "Ganged_EfficiencyLoadRegulationAndLoadTransient_PMIC.vi"],
 )
 
 
