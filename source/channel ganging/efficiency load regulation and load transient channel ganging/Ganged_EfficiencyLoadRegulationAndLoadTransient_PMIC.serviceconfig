@@ -8,7 +8,7 @@
         "ni.measurementlink.measurement.v1.MeasurementService",
         "ni.measurementlink.measurement.v2.MeasurementService"
       ],
-      "path": "start.bat",
+      "path": "measurement.exe",
       "annotations": {
         "ni/service.description": "Efficiency, Load Regulation and Load Transient ganged measurements for PMIC",
         "ni/service.collection": "Ganged_PMIC_Python",
