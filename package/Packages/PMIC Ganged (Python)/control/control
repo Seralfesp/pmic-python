@@ -1,0 +1,13 @@
+Architecture: windows_x64
+Built-Using: nipkg
+Depends: ni-labview-2023-runtime-engine-x86 (>=23.3.0.49272-0+f120), ni-labview-2023-runtime-engine (>=23.3.1.49157-0+f5), ni-labview-2021-runtime-engine (>=21.1.6.49156-0+f4)
+Description: mycompany-myproduct
+Maintainer: MyCompany <email@mycompany.com>
+Package: pmic-ganged-python
+Section: Application Software
+UserVisible: yes
+Version: 1.0.0.1
+XB-DisplayName: PMIC Ganged (Python)
+XB-Plugin: file
+XB-StoreProduct: no
+XB-VisibleForRuntimeDeployment: no

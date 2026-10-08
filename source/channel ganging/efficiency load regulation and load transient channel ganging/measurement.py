@@ -45,8 +45,8 @@ def _cleanup_ganged_session(ganged_session, session_label: str) -> None:
 @measurement_service.configuration('Nominal output voltage', nims.DataType.Double, 1.0)
 @measurement_service.configuration('Measurement timeout', nims.DataType.Double, 10.0)
 # Source Settings
-@measurement_service.configuration('Source master resource name', nims.DataType.String, 'PS_0')
-@measurement_service.configuration('Source slave resource names', nims.DataType.StringArray1D, ['PS_1'])
+@measurement_service.configuration('Source master resource name', nims.DataType.String, '')
+@measurement_service.configuration('Source slave resource names', nims.DataType.StringArray1D, [])
 @measurement_service.configuration('Source system configuration', nims.DataType.Enum, GangedConfig.PARALLEL, enum_type=GangedConfig)
 @measurement_service.configuration('Source start voltage', nims.DataType.Double, 6.0)
 @measurement_service.configuration('Source stop voltage', nims.DataType.Double, 14.0)
@@ -62,8 +62,8 @@ def _cleanup_ganged_session(ganged_session, session_label: str) -> None:
 @measurement_service.configuration('Source voltage compensation frequency', nims.DataType.Double, 3530.0)
 @measurement_service.configuration('Source voltage pole-zero ratio', nims.DataType.Double, 2.0)
 # Load Settings
-@measurement_service.configuration('Load master resource name', nims.DataType.String, 'Load_0')
-@measurement_service.configuration('Load slave resource names', nims.DataType.StringArray1D, ['Load_1'])
+@measurement_service.configuration('Load master resource name', nims.DataType.String, '')
+@measurement_service.configuration('Load slave resource names', nims.DataType.StringArray1D, [])
 @measurement_service.configuration('Load system configuration', nims.DataType.Enum, GangedConfig.PARALLEL, enum_type=GangedConfig)
 @measurement_service.configuration('Load start current', nims.DataType.Double, 1.0)
 @measurement_service.configuration('Load stop current', nims.DataType.Double, 50.0)

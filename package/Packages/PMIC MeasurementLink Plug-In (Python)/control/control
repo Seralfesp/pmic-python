@@ -1,0 +1,15 @@
+Architecture: windows_x64
+Built-Using: nipkg
+Depends: ni-labview-2021-runtime-engine (>=21.1.6.49156-0+f4), ni-labview-2023-runtime-engine-x86 (>=23.3.0.49272-0+f120), ni-labview-2023-runtime-engine (>=23.3.1.49157-0+f5)
+Description: community-pmic-python
+  Measurements for PMIC using MeasurementLink
+Homepage: https://github.com/Seralfesp/pmic-python
+Maintainer: GitHub Community <sergio.alfaro@emerson.com>
+Package: community-pmic-python
+Section: Add-Ons
+UserVisible: yes
+Version: 1.0.0.5
+XB-DisplayName: PMIC MeasurementLink Plug-In (Python)
+XB-Plugin: file
+XB-StoreProduct: yes
+XB-VisibleForRuntimeDeployment: no

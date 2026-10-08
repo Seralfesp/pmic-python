@@ -205,6 +205,9 @@ def build_trigger_terminal(session: Session, channel_name: str, event_name: str)
 def channel_list(master_resource_name: str, slave_resource_names: list):
     """Create a master/slave channel configuration list for ganged operation."""
     master = ChannelList(resource_name=master_resource_name, channel_name="0", channel_mode=ChannelMode.MASTER)
+    if not slave_resource_names:
+        return [master]
+
     slaves = []
     for slave in slave_resource_names:
         slaves.append(ChannelList(resource_name=slave, channel_name="0", channel_mode=ChannelMode.SLAVE))

@@ -1,0 +1,7 @@
+[6:00:13.67 PM] Solution log file opened: C:\g\ganged-pmic-python\pmic-python\package\log-PMIC-python.txt
+[6:00:13.67 PM] System summary
+   Date               10/2/2026 6:00:13 PM
+   NIPB version       19.0.0.49152
+   NIPB bitness       64-bit
+   NIPM version       26.5.0.49297
+   Operating System   Windows 10 64-bit

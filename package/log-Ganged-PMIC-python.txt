@@ -1,0 +1,129 @@
+[10:30:40.81 AM] Solution log file opened: C:\g\ganged-pmic-python\pmic-python\package\log-Ganged-PMIC-python.txt
+[10:30:40.81 AM] System summary
+   Date               10/8/2026 10:30:40 AM
+   NIPB version       19.0.0.49152
+   NIPB bitness       64-bit
+   NIPM version       26.5.0.49297
+   Operating System   Windows 10 64-bit
+[10:30:45.22 AM] ======= Discover: Started =======
+[10:30:45.28 AM] ======= Discover: Summary =======
+[10:30:45.29 AM] NI applications state:
+   TestStand version:   2025 Q2 (24.1.0.49152) 64-bit
+[10:30:45.29 AM] ======= Discover: Complete (elapsed time 00:00.06) =======
+[10:31:56.89 AM] ======= Build Packages: Started =======
+[10:31:56.89 AM] PMIC Ganged (Python): Discover started.
+[10:31:56.95 AM] PMIC Ganged (Python): Discover successful
+[10:31:56.96 AM] PMIC Ganged (Python): Analyze started.
+[10:31:57.00 AM] PMIC Ganged (Python): Analyze successful.
+[10:31:57.00 AM] PMIC Ganged (Python): Clean started.
+[10:31:57.02 AM] PMIC Ganged (Python): Clean successful.
+[10:31:57.03 AM] PMIC Ganged (Python): Build started.
+[10:31:57.08 AM] Initializing LabVIEW distribution interface...
+[10:31:57.12 AM] Using LabVIEW deployment support library in: 'C:\Program Files\National Instruments\TestStand 2024\Components\Tools\Deployment Utility\NIPBSupport2020.lvlibp'
+[10:32:25.77 AM] LabVIEW distribution interface initialization time: 28.68 s
+   Initialize NIPB Support:    28.65 s
+[10:32:32.27 AM] Processing VIs...
+[10:32:32.28 AM] Loading distribution VIs.
+"Get Paths of LV Projects In Memory - TestStand"
+[10:32:32.30 AM] Calling distribution VIs
+"Get Paths of LV Projects In Memory - TestStand"
+[10:32:32.31 AM] Reading link information from top-level VIs...
+[10:32:32.33 AM] Loading distribution VIs.
+"TestStand - Read Linker Info from File LV 8 or Above"
+[10:32:33.27 AM] Calling distribution VIs
+"TestStand - Read Linker Info from File LV 8 or Above"
+[10:32:36.96 AM] Loading distribution VIs.
+"Abort Distribution 2010 - TestStand"
+[10:32:37.09 AM] Finished reading link information from top-level VIs
+[10:32:37.52 AM] Calling distribution VIs
+"Abort Distribution 2010 - TestStand"
+[10:32:37.53 AM] Loading distribution VIs.
+"Create and Save LabVIEW Project - TestStand"
+[10:32:37.53 AM] Calling distribution VIs
+"Create and Save LabVIEW Project - TestStand"
+[10:32:37.61 AM] Error -19034: Unable to execute the following files:
+   Path: C:\Program Files\National Instruments\TestStand 2024\Components\Tools\Deployment Utility\DistVIs\25.0\Distribution VIs.llb\Create and Save LabVIEW Project - TestStand.vi
+[10:32:50.38 AM] PMIC Ganged (Python): Build canceled by user.
+[10:32:50.39 AM] ======= Build Packages: Summary =======
+[10:32:50.39 AM] NI applications state:
+   TestStand version:   2025 Q2 (24.1.0.49152) 64-bit
+   LabVIEW version:     2025 (25.1.2f2) 64-bit
+[10:32:50.38 AM] 1) Package 'PMIC Ganged (Python)' Build detailed summary
+   PMIC Ganged (Python)   Canceled
+   Output directory       C:\g\ganged-pmic-python\pmic-python\package\Packages
+   Filename               pmic-ganged-python_1.0.0.2_windows_x64.nipkg
+   Stage directory        C:\g\ganged-pmic-python\pmic-python\package\Packages\PMIC Ganged (Python)
+   Package version        1.0.0.2
+   Display version        1.0.0
+   Architecture           windows_x64
+[10:32:50.39 AM] ======= Build Packages: 0 Succeeded, 0 Failed, 1 Canceled (elapsed time 00:53.49) =======
+[10:33:00.05 AM] Solution saved: C:\g\ganged-pmic-python\pmic-python\package\Ganged-PMIC-python.pbs
+[10:33:03.23 AM] ======= Build Packages: Started =======
+[10:33:03.23 AM] PMIC Ganged (Python): Discover started.
+[10:33:03.34 AM] PMIC Ganged (Python): Discover successful
+[10:33:03.34 AM] PMIC Ganged (Python): Analyze started.
+[10:33:03.34 AM] PMIC Ganged (Python): Analyze successful.
+[10:33:03.34 AM] PMIC Ganged (Python): Clean started.
+[10:33:03.35 AM] PMIC Ganged (Python): Clean successful.
+[10:33:03.35 AM] PMIC Ganged (Python): Build started.
+[10:33:04.81 AM] Processing VIs...
+[10:33:04.81 AM] Loading distribution VIs.
+"Get Paths of LV Projects In Memory - TestStand"
+[10:33:04.83 AM] Calling distribution VIs
+"Get Paths of LV Projects In Memory - TestStand"
+[10:33:04.89 AM] Reading link information from top-level VIs...
+[10:33:04.90 AM] Loading distribution VIs.
+"TestStand - Read Linker Info from File LV 8 or Above"
+[10:33:05.95 AM] Calling distribution VIs
+"TestStand - Read Linker Info from File LV 8 or Above"
+[10:33:06.76 AM] Finished reading link information from top-level VIs
+[10:33:06.85 AM] Loading distribution VIs.
+"Create and Save LabVIEW Project - TestStand"
+[10:33:06.86 AM] Calling distribution VIs
+"Create and Save LabVIEW Project - TestStand"
+[10:33:07.78 AM] Loading distribution VIs.
+"Validate LV Projects Buildable - TestStand"
+[10:33:07.82 AM] Calling distribution VIs
+"Validate LV Projects Buildable - TestStand"
+[10:33:08.84 AM] Building VI Image...
+[10:33:08.86 AM] Loading distribution VIs.
+"Build VI Distribution 2010 - TestStand"
+[10:33:16.00 AM] Calling distribution VIs
+"Build VI Distribution 2010 - TestStand"
+[10:33:16.04 AM] Creating temporary project for deployment
+[10:33:18.19 AM] Creating source distribution for deployment
+[10:33:18.70 AM] Processing SourceAdapt Parameters.ctl...
+[10:33:18.71 AM] Processing Custom Transient Response for Sweep & Single Point.vi...
+[10:33:18.74 AM] Processing Ganged_EfficiencyLoadRegulationAndLoadTransient_PMIC.vi...
+[10:33:18.75 AM] Processing Multiple SourceAdapt Parameters.ctl...
+[10:33:18.78 AM] Processing Custom Transient Response for Setpoints.vi...
+[10:33:18.79 AM] Compiling...
+[10:33:19.52 AM] Saving SourceAdapt Parameters.ctl...
+[10:33:19.53 AM] Saving Custom Transient Response for Sweep & Single Point.vi...
+[10:33:19.55 AM] Saving Ganged_EfficiencyLoadRegulationAndLoadTransient_PMIC.vi...
+[10:33:19.59 AM] Saving Multiple SourceAdapt Parameters.ctl...
+[10:33:19.64 AM] Saving Custom Transient Response for Setpoints.vi...
+[10:33:19.76 AM] The build is complete. You can locate the build at
+C:\g\ganged-pmic-python\pmic-python\package\ProcessingStage\ProgramData\SupportVIs.
+[10:33:21.13 AM] Finished building current project
+[10:33:21.19 AM] Built VI Image
+[10:33:21.85 AM] Loading distribution VIs.
+"Update Paths In Projects - TestStand"
+[10:33:24.98 AM] Calling distribution VIs
+"Update Paths In Projects - TestStand"
+[10:33:25.01 AM] Finished processing VIs
+[10:33:27.71 AM] PMIC Ganged (Python): Build successful.
+[10:33:27.72 AM] ======= Build Packages: Summary =======
+[10:33:27.77 AM] NI applications state:
+   TestStand version:   2025 Q2 (24.1.0.49152) 64-bit
+   LabVIEW version:     2025 (25.1.2f2) 64-bit
+[10:33:27.72 AM] 1) Package 'PMIC Ganged (Python)' Build detailed summary
+   PMIC Ganged (Python)   Succeeded
+   Output directory       C:\g\ganged-pmic-python\pmic-python\package\Packages
+   Filename               pmic-ganged-python_1.0.0.1_windows_x64.nipkg
+   Stage directory        C:\g\ganged-pmic-python\pmic-python\package\Packages\PMIC Ganged (Python)
+   Package version        1.0.0.1
+   Display version        1.0.0
+   Architecture           windows_x64
+[10:33:27.77 AM] ======= Build Packages: 1 Succeeded, 0 Failed, 0 Canceled (elapsed time 00:24.54) =======
+[10:38:20.93 AM] Solution saved: C:\g\ganged-pmic-python\pmic-python\package\Ganged-PMIC-python.pbs
