@@ -263,6 +263,7 @@ def measure(
             wait_for_event(load_ganged_session, event=Event.SEQUENCE_ENGINE_DONE, timeout=timeout)
 
             ganged_load_transient_voltages, ganged_load_transient_currents = fetch_multiple(load_ganged_session, count=int(fetch_count), timeout=timeout)
+            ganged_load_transient_currents = [abs(current) for current in ganged_load_transient_currents]
 
             # Recreate a clean load session so transient-specific state does not leak into sweep measurements.
             _cleanup_ganged_session(load_ganged_session, "load-transient")

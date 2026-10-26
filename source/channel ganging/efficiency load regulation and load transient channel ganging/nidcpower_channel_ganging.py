@@ -160,8 +160,17 @@ def generate_sequence(
         List of generated sweep values.
     """
     res = []
-    if start > stop or steps <= 0:
+    if steps <= 0:
         return res
+
+    if sweep_type == SweepType.Logarithmic:
+        # Negative sweeps (e.g. load current sinking) are supported, but both ends must share a sign and magnitude must grow.
+        if start == 0 or stop == 0:
+            raise ValueError("Logarithmic sweeps cannot start or stop at 0.")
+        if (start > 0) != (stop > 0):
+            raise ValueError("Logarithmic sweeps require start and stop to have the same sign.")
+        if abs(start) > abs(stop):
+            raise ValueError("Logarithmic sweeps require |start| <= |stop|.")
 
     if sweep_type == SweepType.Linear:
         if with_end_points:
@@ -180,14 +189,14 @@ def generate_sequence(
             r = 10 ** (1 / (steps))
             while True:
                 res.append(start * (r ** len(res)))
-                if res[-1] >= stop:
+                if abs(res[-1]) >= abs(stop):
                     res[-1] = stop
                     return res
         else:
             r = 10 ** (1 / (steps + 1))
             while True:
                 res.append(start * (r ** len(res)))
-                if res[-1] >= stop:
+                if abs(res[-1]) >= abs(stop):
                     res[-1] = stop
                     return res[1:-1]
     pass
@@ -693,8 +702,10 @@ def configure_measure_record_length(ganged_session: GangedSession, record_length
     return
 
 def configure_slew_rate(ganged_session: GangedSession, rising_slew_rate: float, falling_slew_rate: float):
-    """Set rising and falling slew rates for all channels in the ganged session."""
+    """Set rising and falling slew rates on PXIe-4051 channels; other models (e.g. PXIe-4139) do not support them and are skipped."""
     for session, channel in zip(ganged_session.session_list, ganged_session.channel):
+        if session.instrument_model != "NI PXIe-4051":
+            continue
         session.channels[channel].current_level_rising_slew_rate = rising_slew_rate
         session.channels[channel].current_level_falling_slew_rate = falling_slew_rate
     
