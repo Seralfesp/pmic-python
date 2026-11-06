@@ -68,6 +68,7 @@ def _cleanup_ganged_session(ganged_session, session_label: str) -> None:
 @measurement_service.configuration('Load start current', nims.DataType.Double, 1.0)
 @measurement_service.configuration('Load stop current', nims.DataType.Double, 50.0)
 @measurement_service.configuration('Load current sweep points/points per decade', nims.DataType.Int32, 10)
+# Accepted values: Linear, Logarithmic, Decade-linear.
 @measurement_service.configuration('Load sweep type', nims.DataType.String, 'Logarithmic')
 @measurement_service.configuration('Load current level range', nims.DataType.Double, 80.0)
 @measurement_service.configuration('Load sense', nims.DataType.Int32, MeasurementSense.REMOTE.value)
@@ -97,6 +98,8 @@ def _cleanup_ganged_session(ganged_session, session_label: str) -> None:
 @measurement_service.output('Ganged load transient currents', nims.DataType.DoubleArray1D)
 @measurement_service.output('Ganged load transient voltages', nims.DataType.DoubleArray1D)
 @measurement_service.output('Measure record dt', nims.DataType.Double)
+@measurement_service.output('Source voltages', nims.DataType.DoubleArray1D)
+@measurement_service.output('Source currents', nims.DataType.DoubleArray1D)
 def measure(
         dut_setup_time: float,
         source_delay: float,
@@ -159,12 +162,16 @@ def measure(
     ganged_load_transient_currents: list[float] = []
     ganged_load_transient_voltages: list[float] = []
     measure_record_dt = 0
+    source_voltages: list[float] = []
+    source_currents: list[float] = []
     # Measure logic start
 
     try:
         # Validate and map the user-provided sweep type.
         if load_sweep_type.lower() == 'logarithmic':
             load_sweep_type_enum = SweepType.Logarithmic
+        elif load_sweep_type.lower() == 'decadelinear':
+            load_sweep_type_enum = SweepType.DecadeLinear
         elif load_sweep_type.lower() != 'linear':
             raise ValueError(f'{load_sweep_type} Sweep Type is not supported ')
 
@@ -374,6 +381,10 @@ def measure(
                 load_currents.append(abs(ganged_load_i))
                 load_voltages.append(ganged_load_v)
 
+                # Source measurements
+                source_currents.append(abs(ganged_source_i))
+                source_voltages.append(ganged_source_v)
+
                 # Load voltage deviation
                 # Deviation (%) = (Vmeas - Vnominal) / Vnominal * 100.
                 load_voltage_deviation.append(((load_voltages[-1] - nominal_output_voltage) / nominal_output_voltage) * 100)
@@ -398,7 +409,9 @@ def measure(
         load_voltage_deviation,
         ganged_load_transient_currents,
         ganged_load_transient_voltages,
-        measure_record_dt
+        measure_record_dt,
+        source_voltages,
+        source_currents
     )
 
 

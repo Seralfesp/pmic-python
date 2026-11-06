@@ -18,6 +18,7 @@ from concurrent.futures import ThreadPoolExecutor
 from statistics import mean
 
 from dataclasses import dataclass
+from decimal import Decimal
 from enum import Enum
 
 from nidcpower import (
@@ -62,6 +63,10 @@ class SweepType(Enum):
     Logarithmic = 1
     r'''
     The sweep is logarithmic. The values are spaced logarithmically between the start and stop values.
+    '''
+    DecadeLinear = 2
+    r'''
+    The sweep is linear within each decade, with spacing increasing tenfold at each power of ten.
     '''
 
     def __eq__(self, other):
@@ -145,15 +150,20 @@ def generate_sequence(
         steps: int,
         with_end_points: bool = True
 ) -> list[float]:
-    """Generate linear or logarithmic sweep values.
+    """Generate linear, logarithmic, or decade-linear sweep values.
 
-    Returns an empty list when the requested range is invalid or step count is non-positive.
+    Returns an empty list when the step count is non-positive.
+    Logarithmic and decade-linear sweeps require nonzero endpoints of the same
+    sign, ordered by increasing magnitude.
 
     Args:
-        sweep_type: Sweep progression type, linear or logarithmic.
+        sweep_type: Sweep progression type.
         start: Sweep start value.
         stop: Sweep stop value.
-        steps: Number of requested steps.
+        steps: Total points for Linear; intervals per decade for Logarithmic.
+            For DecadeLinear, spacing in [10**k, 10**(k+1)] is 10**(k+1)/steps.
+            Thus 10 gives 0.1, 0.2, ..., 0.9, 1, 2, ...; 100 gives
+            0.10, 0.11, ..., 0.99, 1.0, 1.1, ... .
         with_end_points: Includes start/stop when True.
 
     Returns:
@@ -161,6 +171,41 @@ def generate_sequence(
     """
     res = []
     if steps <= 0:
+        return res
+
+    if sweep_type == SweepType.DecadeLinear:
+        start_magnitude = Decimal(str(abs(start)))
+        stop_magnitude = Decimal(str(abs(stop)))
+        if not start_magnitude.is_finite() or not stop_magnitude.is_finite():
+            raise ValueError("Decade-linear sweeps require finite endpoints.")
+        if start == 0 or stop == 0:
+            raise ValueError("Decade-linear sweeps cannot start or stop at 0.")
+        if (start > 0) != (stop > 0):
+            raise ValueError("Decade-linear sweeps require start and stop to have the same sign.")
+        if start_magnitude > stop_magnitude:
+            raise ValueError("Decade-linear sweeps require |start| <= |stop|.")
+
+        sign = -1 if start < 0 else 1
+        if with_end_points:
+            res.append(start)
+        decade = Decimal(10) ** start_magnitude.adjusted()
+        while decade < stop_magnitude:
+            next_decade = decade * 10
+            spacing = next_decade / steps
+            lower = max(decade, start_magnitude)
+            upper = min(next_decade, stop_magnitude)
+            first_index = int(lower // spacing) + 1
+            last_index = int(upper // spacing)
+            for index in range(first_index, last_index + 1):
+                value = spacing * index
+                if start_magnitude < value < stop_magnitude and value < next_decade:
+                    res.append(sign * float(value))
+            # A decade boundary belongs to both grids; include it only once.
+            if start_magnitude < next_decade < stop_magnitude:
+                res.append(sign * float(next_decade))
+            decade = next_decade
+        if with_end_points and start != stop:
+            res.append(stop)
         return res
 
     if sweep_type == SweepType.Logarithmic:
